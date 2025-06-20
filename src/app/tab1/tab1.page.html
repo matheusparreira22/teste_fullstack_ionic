@@ -10,16 +10,22 @@
       <ion-avatar slot="start">
         <img [src]="pokemon.image" [alt]="pokemon.name" />
       </ion-avatar>
+      <ion-title>{{pokemon.name}}</ion-title>
+      <ion-button>Ver detalhes</ion-button>
     </ion-item>
   </ion-list>
 
   <div class="ion-text-center ion-margin">
-    <!-- <ion-button (click)="prevPage()" [disabled]="offset === 0"> -->
-    Anterior
-    <!-- </ion-button> -->
-    <!-- 
-    <ion-button (click)="nextPage()" [disabled]="offset + limit >= totalCount"> -->
-    Próxima
-    <!-- </ion-button> -->
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <div>
+
+      <ion-button (click)="prevPage()" [disabled]="currentPage === 1"
+        >Anterior</ion-button
+      >
+  
+      <ion-button (click)="nextPage()" [disabled]="currentPage === totalPages"
+        >Próxima</ion-button
+      >
+    </div>
   </div>
 </ion-content>
