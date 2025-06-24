@@ -18,7 +18,11 @@
         >
         </ion-icon>
       </ion-button>
-      <ion-button (click)="showDetails(pokemon.id)">Detalhes</ion-button>
+      <ion-button fill="clear" (click)="showDetails(pokemon.id)">
+        <ion-icon [name]="'information-outline'" color="blue">
+
+        </ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 

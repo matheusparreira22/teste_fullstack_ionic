@@ -13,6 +13,15 @@ A aplicação busca ser responsiva e leve, com design focado em clareza e usabil
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Tela Inicial
+![Home](./screenshots/home.png)
+
+### 🔍 favoritos
+![favorite](./screenshots/favorite.png)
+
+
 ## 📱 Build para Android/iOS (opcional)
 
 > Requer [Capacitor](https://capacitorjs.com/), Android Studio ou Xcode instalados.

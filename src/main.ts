@@ -15,11 +15,14 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
 import { addIcons } from 'ionicons';
-import { heartOutline, heart } from 'ionicons/icons';
+import { heartOutline, heart, helpOutline, help, informationOutline } from 'ionicons/icons';
 
 addIcons({
   'heart-outline': heartOutline,
   heart: heart,
+  'help-outline': helpOutline,
+  help: help,
+  'information-outline': informationOutline
 });
 
 bootstrapApplication(AppComponent, {

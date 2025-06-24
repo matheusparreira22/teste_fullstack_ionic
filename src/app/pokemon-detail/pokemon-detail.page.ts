@@ -19,7 +19,7 @@ import {
   IonGrid,
   IonRow,
   IonCol,
-  IonImg
+  IonImg,
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -44,13 +44,13 @@ import { CommonModule } from '@angular/common';
     IonGrid,
     IonRow,
     IonCol,
-    IonImg
+    IonImg,
   ],
 })
 export class PokemonDetailPage implements OnInit {
   pokemon: any = {};
   species: any = {};
-
+  types: any = [];
   constructor(
     private route: ActivatedRoute,
     private pokeapiService: ApiPokemonSerivce
@@ -60,7 +60,8 @@ export class PokemonDetailPage implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.pokeapiService.getPokemon(Number(id)).subscribe((data) => {
       this.pokemon = data;
-      // Consulta adicional para species
+      console.log(data['types']);
+      this.types = this.getTypes(data['types']);
       this.pokeapiService
         .getPokemonSpecies(data.species.name)
         .subscribe((speciesData) => {
@@ -73,5 +74,11 @@ export class PokemonDetailPage implements OnInit {
     if (rate >= 200) return 'Fácil';
     if (rate >= 100) return 'Médio';
     return 'Difícil';
+  }
+
+  getTypes(list: Array<any>) {
+    const listTypes =  list.filter((types) => types.name);
+    console.log(list)
+    return listTypes
   }
 }
