@@ -11,7 +11,7 @@
         <img [src]="pokemon.image" [alt]="pokemon.name" />
       </ion-avatar>
       <ion-title>{{pokemon.name}}</ion-title>
-      <ion-button>Ver detalhes</ion-button>
+      <ion-button (click)="showDetails(pokemon.id)">Detalhes</ion-button>
     </ion-item>
   </ion-list>
 

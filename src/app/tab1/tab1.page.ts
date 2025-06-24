@@ -8,9 +8,9 @@ import {
   IonList,
   IonItem,
   IonAvatar,
-  IonButton
+  IonButton,
 } from '@ionic/angular/standalone';
-// import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     IonAvatar,
     IonItem,
-    IonButton
+    IonButton,
   ],
 })
 export class Tab1Page implements OnInit {
@@ -37,7 +37,10 @@ export class Tab1Page implements OnInit {
   currentPage = 1;
   totalPages = 1;
 
-  constructor(private pokemonSerivce: ApiPokemonSerivce) {}
+  constructor(
+    private pokemonSerivce: ApiPokemonSerivce,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadPokemons();
@@ -46,19 +49,21 @@ export class Tab1Page implements OnInit {
   loadPokemons() {
     this.offset = (this.currentPage - 1) * this.limit;
 
-    this.pokemonSerivce.getAll(this.offset, this.limit).subscribe((response) => {
-      this.totalCount = response.count;
-      this.totalPages = Math.ceil(this.totalCount / this.limit);
+    this.pokemonSerivce
+      .getAll(this.offset, this.limit)
+      .subscribe((response) => {
+        this.totalCount = response.count;
+        this.totalPages = Math.ceil(this.totalCount / this.limit);
 
-      this.pokemons = response.results.map((pokemon: any) => {
-        const id = this.extractIdFromUrl(pokemon.url);
-        return {
-          name: pokemon.name,
-          id,
-          image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
-        };
+        this.pokemons = response.results.map((pokemon: any) => {
+          const id = this.extractIdFromUrl(pokemon.url);
+          return {
+            name: pokemon.name,
+            id,
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+          };
+        });
       });
-    });
   }
 
   extractIdFromUrl(url: string): number {
@@ -79,5 +84,8 @@ export class Tab1Page implements OnInit {
       this.loadPokemons();
     }
   }
-}
 
+  showDetails(id: number) {
+    this.router.navigate(['/pokemons/pokemon', id]);
+  }
+}
