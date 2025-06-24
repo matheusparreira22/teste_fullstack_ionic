@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonLabel, IonItem, IonAvatar } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonList,
+  IonLabel,
+  IonItem,
+  IonAvatar,
+} from '@ionic/angular/standalone';
 import { FavoriteService } from '../services/favorite.service';
 import { ApiPokemonSerivce } from '../services/apiPokemon.service';
 
@@ -10,9 +19,17 @@ import { ApiPokemonSerivce } from '../services/apiPokemon.service';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule,  IonList, IonLabel, IonItem, IonAvatar]
+  imports: [
+    IonContent,
+    CommonModule,
+    FormsModule,
+    IonList,
+    IonLabel,
+    IonItem,
+    IonAvatar,
+  ],
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage   {
   favoritePokemons: any[] = [];
 
   constructor(
@@ -20,7 +37,7 @@ export class FavoritesPage implements OnInit {
     private pokemonService: ApiPokemonSerivce
   ) {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadFavorites();
   }
 
@@ -29,14 +46,13 @@ export class FavoritesPage implements OnInit {
     this.favoritePokemons = [];
 
     for (const id of ids) {
-      this.pokemonService.getPokemon(id).subscribe(pokemon => {
+      this.pokemonService.getPokemon(id).subscribe((pokemon) => {
         this.favoritePokemons.push({
           id,
           name: pokemon.name,
-          image: pokemon.sprites.front_default
+          image: pokemon.sprites.front_default,
         });
       });
     }
   }
 }
-
