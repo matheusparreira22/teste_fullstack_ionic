@@ -18,9 +18,10 @@ A aplicação busca ser responsiva e leve, com design focado em clareza e usabil
 ### 🏠 Tela Inicial
 ![Home](./screenshots/home.png)
 
-### 🔍 favoritos
+###  ⭐ Favoritos
 ![favorite](./screenshots/favorite.png)
 
+### 🔍 details
 
 ## 📱 Build para Android/iOS (opcional)
 

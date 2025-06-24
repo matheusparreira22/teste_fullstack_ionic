@@ -77,8 +77,7 @@ export class PokemonDetailPage implements OnInit {
   }
 
   getTypes(list: Array<any>) {
-    const listTypes =  list.filter((types) => types.name);
-    console.log(list)
-    return listTypes
+    const listTypes = list.map((obj) => obj.type.name);
+    return listTypes;
   }
 }
