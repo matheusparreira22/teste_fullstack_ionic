@@ -22,7 +22,7 @@ A aplicação busca ser responsiva e leve, com design focado em clareza e usabil
 ![favorite](./screenshots/favorite.png)
 
 ### 🔍 details
-
+![details](./screenshots/details.png)
 ## 📱 Build para Android/iOS (opcional)
 
 > Requer [Capacitor](https://capacitorjs.com/), Android Studio ou Xcode instalados.
