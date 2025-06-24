@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
     IonImg
   ],
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailPage implements OnInit {
   pokemon: any = {};
   species: any = {};
 

@@ -9,10 +9,12 @@ import {
   IonItem,
   IonAvatar,
   IonButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FavoriteService } from '../services/favorite.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -27,6 +29,7 @@ import { CommonModule } from '@angular/common';
     IonAvatar,
     IonItem,
     IonButton,
+    IonIcon,
   ],
 })
 export class Tab1Page implements OnInit {
@@ -39,7 +42,8 @@ export class Tab1Page implements OnInit {
 
   constructor(
     private pokemonSerivce: ApiPokemonSerivce,
-    private router: Router
+    private router: Router,
+    private favoriteService: FavoriteService,
   ) {}
 
   ngOnInit(): void {
@@ -86,6 +90,15 @@ export class Tab1Page implements OnInit {
   }
 
   showDetails(id: number) {
-    this.router.navigate(['/pokemons/pokemon', id]);
+    this.router.navigate(['/tabs/pokemon', id]); // ✅ caminho correto
+
+  }
+
+  isFavorite(id: number): boolean {
+    return this.favoriteService.isFavorite(id);
+  }
+
+  toggleFavorite(id: number) {
+    this.favoriteService.toggleFavorite(id);
   }
 }

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
+    <ion-title>Poke List </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,6 +11,13 @@
         <img [src]="pokemon.image" [alt]="pokemon.name" />
       </ion-avatar>
       <ion-title>{{pokemon.name}}</ion-title>
+      <ion-button slot="end" fill="clear" (click)="toggleFavorite(pokemon.id)">
+        <ion-icon
+          [name]="isFavorite(pokemon.id) ? 'heart' : 'heart-outline'"
+          color="danger"
+        >
+        </ion-icon>
+      </ion-button>
       <ion-button (click)="showDetails(pokemon.id)">Detalhes</ion-button>
     </ion-item>
   </ion-list>
@@ -18,11 +25,10 @@
   <div class="ion-text-center ion-margin">
     <span>Página {{ currentPage }} de {{ totalPages }}</span>
     <div>
-
       <ion-button (click)="prevPage()" [disabled]="currentPage === 1"
         >Anterior</ion-button
       >
-  
+
       <ion-button (click)="nextPage()" [disabled]="currentPage === totalPages"
         >Próxima</ion-button
       >

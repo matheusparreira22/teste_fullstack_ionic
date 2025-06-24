@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonLabel, IonItem, IonAvatar } from '@ionic/angular/standalone';
+import { FavoriteService } from '../services/favorite.service';
+import { ApiPokemonSerivce } from '../services/apiPokemon.service';
+
+@Component({
+  selector: 'app-favorites',
+  templateUrl: './favorites.page.html',
+  styleUrls: ['./favorites.page.scss'],
+  standalone: true,
+  imports: [IonContent, CommonModule, FormsModule,  IonList, IonLabel, IonItem, IonAvatar]
+})
+export class FavoritesPage implements OnInit {
+  favoritePokemons: any[] = [];
+
+  constructor(
+    private favoriteService: FavoriteService,
+    private pokemonService: ApiPokemonSerivce
+  ) {}
+
+  ngOnInit() {
+    this.loadFavorites();
+  }
+
+  async loadFavorites() {
+    const ids = this.favoriteService.getFavorites();
+    this.favoritePokemons = [];
+
+    for (const id of ids) {
+      this.pokemonService.getPokemon(id).subscribe(pokemon => {
+        this.favoritePokemons.push({
+          id,
+          name: pokemon.name,
+          image: pokemon.sprites.front_default
+        });
+      });
+    }
+  }
+}
+

@@ -14,12 +14,14 @@ export const routes: Routes = [
       {
         path: 'pokemon/:id',
         loadComponent: () =>
-          import('../pokemon-detail/pokemon-detail.page').then((m) => m.PokemonDetailComponent),
+          import('../pokemon-detail/pokemon-detail.page').then(
+            (m) => m.PokemonDetailPage
+          ),
       },
       {
-        path: 'tab3',
+        path: 'favorites',
         loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../favorites/favorites.page').then((m) => m.FavoritesPage),
       },
       {
         path: '',
