@@ -10,6 +10,8 @@ import {
   IonLabel,
   IonItem,
   IonAvatar,
+  IonButtons,
+  IonBackButton,
 } from '@ionic/angular/standalone';
 import { FavoriteService } from '../services/favorite.service';
 import { ApiPokemonSerivce } from '../services/apiPokemon.service';
@@ -27,9 +29,14 @@ import { ApiPokemonSerivce } from '../services/apiPokemon.service';
     IonLabel,
     IonItem,
     IonAvatar,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
   ],
 })
-export class FavoritesPage   {
+export class FavoritesPage {
   favoritePokemons: any[] = [];
 
   constructor(
